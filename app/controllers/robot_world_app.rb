@@ -19,7 +19,12 @@ class RobotWorldApp < Sinatra::Base
 
   post "/robots" do
     robot_manager.create(params[:robot])
-    redirect '/tasks'
+    redirect '/robots'
+  end
+
+  get '/robots/:name/edit' do
+    robot_manager.find(:name)
+    erb :edit
   end
 
   def robot_manager

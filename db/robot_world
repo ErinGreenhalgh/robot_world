@@ -1,0 +1,9 @@
+---
+robots:
+- name: Henry
+  city: '1'
+  state: ''
+  avatar: '2'
+  birthdate: '3'
+  date_hired: '4'
+  department: '5'
