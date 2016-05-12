@@ -20,10 +20,15 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
-  get '/robots/:name/edit' do |name|
-    robot_manager.find(name)
-    erb :edit
+  put '/robots/:name' do |name|
+    @robot = robot_manager.update(params[:robot], name)
+    redirect '/robots/:name'
   end
+
+  # get '/robots/:name/edit' do |name|
+  #   @robot = robot_manager.find(name)
+  #   erb :edit
+  # end
 
   get '/robots/:name' do |name|
     @robot = robot_manager.find(name)
