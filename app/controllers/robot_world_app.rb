@@ -1,8 +1,4 @@
-require "models/robot_manager"
-require "models/robot"
-
 class RobotWorldApp < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
 
   get "/" do
     erb :dashboard
@@ -22,17 +18,19 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
-  get '/robots/:name/edit' do
-    robot_manager.find(:name)
+  get '/robots/:name/edit' do |name|
+    robot_manager.find(name)
     erb :edit
+  end
+
+  get '/robots/:name' do |name|
+    @robot = robot_manager.find(name)
+    erb :show
   end
 
   def robot_manager
     database = YAML::Store.new('db/robot_world')
     @robot_manager ||=   RobotManager.new(database)
   end
-
-
-
 
 end

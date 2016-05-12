@@ -7,3 +7,10 @@ robots:
   birthdate: '3'
   date_hired: '4'
   department: '5'
+- name: Harry
+  city: '1'
+  state: '2'
+  avatar: '3'
+  birthdate: '4'
+  date_hired: '5'
+  department: '6'

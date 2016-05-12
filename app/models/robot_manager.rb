@@ -1,5 +1,4 @@
 require 'yaml/store'
-require 'models/robot'
 
 class RobotManager
   attr_reader :database
@@ -12,6 +11,10 @@ class RobotManager
     database.transaction do
       database["robots"] || []
     end
+  end
+
+  def raw_robot(name)
+    raw_robots.find {|robot| robot['name'] == name}
   end
 
   def all
@@ -30,5 +33,9 @@ class RobotManager
                              "department" => robot_data[:department],
                             }
     end
+  end
+
+  def find(name)
+    Robot.new(raw_robot(name))
   end
 end
