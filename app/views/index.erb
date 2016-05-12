@@ -5,8 +5,9 @@
     <title>Robot Index</title>
   </head>
   <body>
+    <h1>All the Robots</h1>
     <% @robots.each do |robot|%>
-      <%= robot %>
+      <h3><a href="/robots/<%= robot.name%>"><%= robot.name %></a></h3>
     <% end %>
   </body>
 </html>
