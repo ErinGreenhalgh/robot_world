@@ -25,11 +25,6 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots/:name'
   end
 
-  # get '/robots/:name/edit' do |name|
-  #   @robot = robot_manager.find(name)
-  #   erb :edit
-  # end
-
   get '/robots/:name' do |name|
     @robot = robot_manager.find(name)
     erb :show
