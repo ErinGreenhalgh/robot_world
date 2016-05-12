@@ -14,3 +14,10 @@ robots:
   birthdate: '4'
   date_hired: '5'
   department: '6'
+- name: Mary
+  city: Denver
+  state: CO
+  avatar: GUY
+  birthdate: 1-13-92
+  date_hired: 1-13-92
+  department: Fun

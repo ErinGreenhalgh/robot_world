@@ -1,3 +1,5 @@
+require 'yaml/store'
+
 class RobotWorldApp < Sinatra::Base
 
   get "/" do
@@ -30,7 +32,7 @@ class RobotWorldApp < Sinatra::Base
 
   def robot_manager
     database = YAML::Store.new('db/robot_world')
-    @robot_manager ||=   RobotManager.new(database)
+    @robot_manager ||=  RobotManager.new(database)
   end
 
 end
