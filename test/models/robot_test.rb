@@ -11,7 +11,7 @@ class RobotTest < Minitest::Test
       "avatar" => "robot_url",
       "birthdate" => "05-12-1990",
       "date_hired" => "05-15-2015",
-      "department" =>  "Human Resources"
+      "department" => "Human Resources"
     }
     r = Robot.new(data)
     assert_equal "Henry", r.name

@@ -38,4 +38,10 @@ class RobotManager
   def find(name)
     Robot.new(raw_robot(name))
   end
+
+  def delete_all
+    database.transaction do
+      database['robots'] = []
+    end
+  end
 end
