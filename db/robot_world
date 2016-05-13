@@ -28,3 +28,12 @@ robots:
   birthdate: '4'
   date_hired: '5'
   department: '6'
+- id: 1
+  name: Mr. Guy
+  city: '1'
+  state: '2'
+  avatar: '6'
+  birthdate: '4'
+  date_hired: '5'
+  department: '7'
+total: 1
