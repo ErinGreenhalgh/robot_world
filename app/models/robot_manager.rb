@@ -7,24 +7,13 @@ class RobotManager
     @database = database
   end
 
-  def raw_robots
-    database.transaction do
-      database["robots"] || []
-    end
-  end
-
-  def raw_robot(name)
-    raw_robots.find {|robot| robot['name'] == name}
-  end
-
-  def all
-    raw_robots.map { |robot_data| Robot.new(robot_data)}
-  end
-
   def create(robot_data)
     database.transaction do
       database['robots'] ||= []
-      database['robots'] << {"name" => robot_data[:name],
+      database['total'] ||= 0
+      database['total'] += 1
+      database['robots'] << {"id" => database['total'],
+                             "name" => robot_data[:name],
                              "city" => robot_data[:city],
                              "state" => robot_data[:state],
                              "avatar" => robot_data[:avatar],
@@ -35,11 +24,25 @@ class RobotManager
     end
   end
 
+  def raw_robots
+    database.transaction do
+      database["robots"] || []
+    end
+  end
+
+  def raw_robot(name)
+    raw_robots.find {|robot| robot["name"] == name}
+  end
+
+  def all
+    raw_robots.map { |robot_data| Robot.new(robot_data)}
+  end
+
   def find(name)
     Robot.new(raw_robot(name))
   end
 
-  def update(name, robot_data)
+  def update(id, robot_data)
     database.transaction do
       target_robot = database['robots'].find { |data| data["name"] == name }
       target_robot["name"] = robot_data[:name]
@@ -55,6 +58,7 @@ class RobotManager
   def delete_all
     database.transaction do
       database['robots'] = []
+      database['total'] = 0
     end
   end
 end

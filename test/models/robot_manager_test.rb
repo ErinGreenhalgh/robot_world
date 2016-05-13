@@ -15,9 +15,14 @@ class RobotManagerTest < Minitest::Test
     }
     robot_manager.create(data)
     robot = robot_manager.find("Henry")
+    assert_equal "Henry", robot.name
     assert_equal "Denver", robot.city
     assert_equal "CO", robot.state
-    assert_equal "Henry", robot.name
+    assert_equal "https://robohash.org/guy", robot.avatar
+    assert_equal "05-12-2000", robot.birthdate
+    assert_equal "05-12-2015", robot.date_hired
+    assert_equal "accounting", robot.department
+
   end
 
   def test_it_can_find_all_robots
@@ -33,16 +38,17 @@ class RobotManagerTest < Minitest::Test
     robot_manager.create({name: "Henry", city: "Denver"})
     r = robot_manager.find("Henry")
     assert_equal "Henry", r.name
+    assert_equal 1, r.id
     assert_equal Robot, r.class
   end
 
-  def test_it_can_update_a_robot
-    skip
-  end
-
-  def test_it_can_destroy_a_robot
-    skip
-    robot_manager.create({name: "Henry", city: "Denver"})
-
-  end
+  # def test_it_can_update_a_robot
+  #   skip
+  # end
+  #
+  # def test_it_can_destroy_a_robot
+  #   skip
+  #   robot_manager.create({name: "Henry", city: "Denver"})
+  #
+  # end
 end
