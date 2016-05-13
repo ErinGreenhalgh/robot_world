@@ -13,8 +13,8 @@ class RobotManagerTest < Minitest::Test
       date_hired: "05-12-2015",
       department: "accounting"
     }
-    robot_manager.create(data)
-    robot = robot_manager.find("Henry")
+    robot_id = robot_manager.create(data)
+    robot = robot_manager.find(robot_id)
     assert_equal "Henry", robot.name
     assert_equal "Denver", robot.city
     assert_equal "CO", robot.state
