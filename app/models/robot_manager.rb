@@ -30,19 +30,19 @@ class RobotManager
     end
   end
 
-  def raw_robot(id)
-    raw_robots.find {|robot| robot["id"] == id}
+  def raw_robot(name)
+    raw_robots.find {|robot| robot["name"] == name}
   end
 
   def all
     raw_robots.map { |robot_data| Robot.new(robot_data)}
   end
 
-  def find(id)
-    Robot.new(raw_robot(id))
+  def find(name)
+    Robot.new(raw_robot(name))
   end
 
-  def update(name, robot_data)
+  def update(id, robot_data)
     database.transaction do
       target_robot = database['robots'].find { |data| data["name"] == name }
       target_robot["name"] = robot_data[:name]

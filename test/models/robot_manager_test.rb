@@ -5,7 +5,6 @@ class RobotManagerTest < Minitest::Test
 
   def test_it_can_create_a_new_robot
     data = {
-      # id: 1
       name: "Henry",
       city: "Denver",
       state: "CO",
@@ -15,7 +14,7 @@ class RobotManagerTest < Minitest::Test
       department: "accounting"
     }
     robot_manager.create(data)
-    robot = robot_manager.find(1)
+    robot = robot_manager.find("Henry")
     assert_equal "Henry", robot.name
     assert_equal "Denver", robot.city
     assert_equal "CO", robot.state
@@ -37,8 +36,9 @@ class RobotManagerTest < Minitest::Test
 
   def test_it_can_find_a_specific_robot
     robot_manager.create({name: "Henry", city: "Denver"})
-    r = robot_manager.find(1)
+    r = robot_manager.find("Henry")
     assert_equal "Henry", r.name
+    assert_equal 1, r.id
     assert_equal Robot, r.class
   end
 
