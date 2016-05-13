@@ -31,7 +31,7 @@ class RobotWorldApp < Sinatra::Base
   end
 
   def robot_manager
-    database = YAML::Store.new('db/robot_world')
+    database = Sequel.postgres('robot_world')
     @robot_manager ||=  RobotManager.new(database)
   end
 
