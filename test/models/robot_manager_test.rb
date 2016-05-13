@@ -35,10 +35,10 @@ class RobotManagerTest < Minitest::Test
   end
 
   def test_it_can_find_a_specific_robot
-    robot_manager.create({name: "Henry", city: "Denver"})
-    r = robot_manager.find("Henry")
+    robot_id = robot_manager.create({name: "Henry", city: "Denver"})
+    r = robot_manager.find(robot_id)
     assert_equal "Henry", r.name
-    assert_equal 1, r.id
+    assert_equal robot_id, r.id
     assert_equal Robot, r.class
   end
 
