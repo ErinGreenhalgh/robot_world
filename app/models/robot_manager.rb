@@ -1,5 +1,3 @@
-require 'yaml/store'
-
 class RobotManager
   attr_reader :database
 

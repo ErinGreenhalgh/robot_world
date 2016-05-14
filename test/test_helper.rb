@@ -17,11 +17,11 @@ module TestHelper
     database = Sequel.postgres('robot_manager_test')
     @robot_manager ||= RobotManager.new(database)
   end
+end
 
   Capybara.app = RobotWorldApp
 
-  class FeatureTest < Minitest::Test
-    include Capybara::DSL
-    include TestHelper
-  end
+class FeatureTest < Minitest::Test
+  include Capybara::DSL
+  include TestHelper
 end
