@@ -5,6 +5,7 @@ class RobotWorldApp < Sinatra::Base
   end
 
   get "/robots" do
+    # require "pry"; binding.pry
     @robots = robot_manager.all
     erb :index
   end
@@ -29,7 +30,11 @@ class RobotWorldApp < Sinatra::Base
   end
 
   def robot_manager
-    database = Sequel.postgres('robot_manager')
+    if ENV['RACK_ENV'] == 'test'
+      database = Sequel.postgres('robot_manager_test')
+    else
+      database = Sequel.postgres('robot_manager')
+    end   
     @robot_manager ||=  RobotManager.new(database)
   end
 
