@@ -7,39 +7,32 @@ class RobotManager
     @database = database
   end
 
+  def table
+    database.from(:robots).order(:id)
+  end
+
   def create(robot_data)
-    database.transaction do
-      database['robots'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['robots'] << {"id" => database['total'],
-                             "name" => robot_data[:name],
-                             "city" => robot_data[:city],
-                             "state" => robot_data[:state],
-                             "avatar" => robot_data[:avatar],
-                             "birthdate" => robot_data[:birthdate],
-                             "date_hired" => robot_data[:date_hired],
-                             "department" => robot_data[:department],
-                            }
-    end
+    table.insert(
+      name: robot_data[:name],
+      city: robot_data[:city],
+      state: robot_data[:state],
+      avatar: robot_data[:avatar],
+      birthdate: robot_data[:birthdate],
+      date_hired: robot_data[:date_hired],
+      department: robot_data[:department]
+    )
   end
 
-  def raw_robots
-    database.transaction do
-      database["robots"] || []
-    end
-  end
-
-  def raw_robot(name)
-    raw_robots.find {|robot| robot["name"] == name}
+  def raw_robot(id)
+    table.where(:id => id).to_a[0]
   end
 
   def all
-    raw_robots.map { |robot_data| Robot.new(robot_data)}
+    table.to_a.map { |data| Robot.new(data)}
   end
 
-  def find(name)
-    Robot.new(raw_robot(name))
+  def find(id)
+    Robot.new(raw_robot(id))
   end
 
   def update(id, robot_data)
@@ -56,9 +49,6 @@ class RobotManager
   end
 
   def delete_all
-    database.transaction do
-      database['robots'] = []
-      database['total'] = 0
-    end
+    table.delete
   end
 end
