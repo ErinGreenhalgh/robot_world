@@ -15,4 +15,4 @@ databases.each do |database|
     String :date_hired, :size => 50
     String :department, :size => 255
   end
-end 
+end

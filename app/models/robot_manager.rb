@@ -21,36 +21,15 @@ class RobotManager
       date_hired: robot_data[:date_hired],
       department: robot_data[:department]
     )
-    # database.transaction do
-    #   database['robots'] ||= []
-    #   database['total'] ||= 0
-    #   database['total'] += 1
-    #   database['robots'] << {"id" => database['total'],
-    #                          "name" => robot_data[:name],
-    #                          "city" => robot_data[:city],
-    #                          "state" => robot_data[:state],
-    #                          "avatar" => robot_data[:avatar],
-    #                          "birthdate" => robot_data[:birthdate],
-    #                          "date_hired" => robot_data[:date_hired],
-    #                          "department" => robot_data[:department],
-    #                         }
-    # end
   end
 
-  # def raw_robots
-  #   database.transaction do
-  #     database["robots"] || []
-  #   end
-  # end
-
   def raw_robot(id)
-    # table.find {|robot| robot["name"] == name}
     table.where(:id => id).to_a[0]
   end
 
   def all
-    # raw_robots.map { |robot_data| Robot.new(robot_data)}
     table.to_a.map { |data| Robot.new(data)}
+    # require "pry"; binding.pry
   end
 
   def find(id)
@@ -71,10 +50,6 @@ class RobotManager
   end
 
   def delete_all
-    # database.transaction do
-    #   database['robots'] = []
-    #   database['total'] = 0
-    # end
     table.delete
   end
 end

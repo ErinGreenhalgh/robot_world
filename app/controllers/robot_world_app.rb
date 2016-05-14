@@ -1,5 +1,3 @@
-require 'yaml/store'
-
 class RobotWorldApp < Sinatra::Base
 
   get "/" do
@@ -20,18 +18,18 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
-  put '/robots/:name' do |name|
-    @robot = robot_manager.update(params[:robot], name)
+  put '/robots/:id' do |id|
+    @robot = robot_manager.update(params[:robot], id)
     redirect '/robots/:name'
   end
 
-  get '/robots/:name' do |name|
-    @robot = robot_manager.find(name)
+  get '/robots/:id' do |id|
+    @robot = robot_manager.find(id)
     erb :show
   end
 
   def robot_manager
-    database = Sequel.postgres('robot_world')
+    database = Sequel.postgres('robot_manager')
     @robot_manager ||=  RobotManager.new(database)
   end
 
