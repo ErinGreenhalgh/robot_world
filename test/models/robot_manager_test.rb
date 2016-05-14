@@ -42,13 +42,4 @@ class RobotManagerTest < Minitest::Test
     assert_equal Robot, r.class
   end
 
-  # def test_it_can_update_a_robot
-  #   skip
-  # end
-  #
-  # def test_it_can_destroy_a_robot
-  #   skip
-  #   robot_manager.create({name: "Henry", city: "Denver"})
-  #
-  # end
 end

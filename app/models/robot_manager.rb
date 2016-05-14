@@ -29,7 +29,6 @@ class RobotManager
 
   def all
     table.to_a.map { |data| Robot.new(data)}
-    # require "pry"; binding.pry
   end
 
   def find(id)

@@ -5,14 +5,14 @@ class RobotTest < Minitest::Test
   def test_it_can_assign_robot_attributes
     data =
     {
-      "id" => 1,
-      "name" => "Henry",
-      "city" => "Denver",
-      "state" => "CO",
-      "avatar" => "robot_url",
-      "birthdate" => "05-12-1990",
-      "date_hired" => "05-15-2015",
-      "department" => "Human Resources"
+      :id => 1,
+      :name => "Henry",
+      :city => "Denver",
+      :state => "CO",
+      :avatar => "robot_url",
+      :birthdate => "05-12-1990",
+      :date_hired => "05-15-2015",
+      :department => "Human Resources"
     }
     r = Robot.new(data)
     assert_equal 1, r.id
