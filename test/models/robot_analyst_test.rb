@@ -10,7 +10,8 @@ class RobotAnalystTest < Minitest::Test
       city: "Denver",
       state: "CO",
       department: "IT",
-      date_hired: "05-14-2015"
+      date_hired: "05-14-2015",
+      birthdate: "05-14-1976"
     }
 
     data2=
@@ -19,7 +20,8 @@ class RobotAnalystTest < Minitest::Test
       city: "Tucson",
       state: "AZ",
       department: "HR",
-      date_hired: "01-13-1992"
+      date_hired: "01-13-1992",
+      birthdate: "01-13-1989"
     }
 
     data3=
@@ -28,7 +30,8 @@ class RobotAnalystTest < Minitest::Test
       city: "Tucson",
       state: "AZ",
       department: "IT",
-      date_hired: "12-13-2015"
+      date_hired: "12-13-2015",
+      birthdate: "12-13-2000"
     }
 
     robot_manager.create(data1)
@@ -129,5 +132,16 @@ class RobotAnalystTest < Minitest::Test
     }
     assert_equal year_data, @ra.robots_hired_per_year
   end
+
+  def test_it_can_convert_strings_to_date_objects
+    assert_equal Date, @ra.convert_birthdate_to_date_object.first.class
+  end
+
+  def test_it_can_find_the_age_of_each_robot
+    # skip
+    assert_equal [1, 2], @ra.find_all_ages
+  end
+
+
 
 end
