@@ -37,6 +37,10 @@ class RobotManager
     locate_robot(id).update(robot_data)
   end
 
+  def destroy(id)
+    locate_robot(id).delete
+  end
+
   def delete_all
     table.delete
   end
