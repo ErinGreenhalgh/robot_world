@@ -42,4 +42,36 @@ class RobotManagerTest < Minitest::Test
     assert_equal Robot, r.class
   end
 
+  def test_it_can_update_a_robot
+    data = {
+      name: "Henry",
+      city: "Denver",
+      state: "CO",
+      avatar: "https://robohash.org/guy",
+      birthdate: "05-12-2000",
+      date_hired: "05-12-2015",
+      department: "accounting"
+    }
+
+    updated_data = {
+      name: "Henrietta",
+      city: "Tuscon",
+      state: "AZ",
+      avatar: "https://robohash.org/guy",
+      birthdate: "05-12-2000",
+      date_hired: "05-12-2015",
+      department: "accounting"
+    }
+    id = robot_manager.create(data)
+    robot = robot_manager.find(id)
+    assert_equal "Henry", robot.name
+    assert_equal "Denver", robot.city
+    assert_equal "CO", robot.state
+    robot_manager.update(updated_data, id)
+    updated_robot = robot_manager.find(id)
+    assert_equal "Henrietta", updated_robot.name
+    assert_equal "Tuscon", updated_robot.city
+    assert_equal "AZ", updated_robot.state
+  end
+
 end
