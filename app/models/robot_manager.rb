@@ -33,7 +33,7 @@ class RobotManager
     Robot.new(raw_robot(id))
   end
 
-  def update(id, robot_data)
+  def update(robot_data, id)
     locate_robot(id).update(robot_data)
   end
 
@@ -42,6 +42,7 @@ class RobotManager
   end
 
   def locate_robot(id)
+    # require "pry"; binding.pry
     table.where(:id => id)
   end
 end

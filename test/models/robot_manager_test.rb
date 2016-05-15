@@ -67,7 +67,7 @@ class RobotManagerTest < Minitest::Test
     assert_equal "Henry", robot.name
     assert_equal "Denver", robot.city
     assert_equal "CO", robot.state
-    robot_manager.update(id,updated_data)
+    robot_manager.update(updated_data, id)
     updated_robot = robot_manager.find(id)
     assert_equal "Henrietta", updated_robot.name
     assert_equal "Tuscon", updated_robot.city
