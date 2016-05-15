@@ -81,4 +81,27 @@ class RobotAnalystTest < Minitest::Test
     assert_equal state_data, @ra.robots_per_state
   end
 
+  def test_it_can_collect_all_departments
+    collected = [{"IT"=>1}, {"HR"=>1}, {"IT"=>1}]
+    assert_equal collected, @ra.collect_all_departments
+  end
+
+  def test_it_can_group_all_departments
+    grouped =
+    {
+      "HR" => [{"HR" => 1}],
+      "IT" => [{"IT" => 1}, {"IT" => 1}]
+    }
+    assert_equal grouped, @ra.group_by_department
+  end
+
+  def test_it_can_give_robots_per_department
+    state_data =
+    {
+      "HR" => 1,
+      "IT" => 2
+    }
+    assert_equal state_data, @ra.robots_per_department
+  end
+
 end
