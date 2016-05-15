@@ -21,4 +21,5 @@ class UserCanDeleteARobotTest < FeatureTest
     assert '/robots', current_path
     refute page.has_content?("Henry")
   end
+  
 end

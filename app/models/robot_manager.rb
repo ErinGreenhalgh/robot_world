@@ -46,7 +46,7 @@ class RobotManager
   end
 
   def locate_robot(id)
-    # require "pry"; binding.pry
     table.where(:id => id)
   end
+
 end
