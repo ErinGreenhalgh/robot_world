@@ -30,4 +30,5 @@ class UserSeesAllRobotsTest < FeatureTest
     assert page.has_content?("Henry")
     assert page.has_content?("Gary")
   end
+  
 end

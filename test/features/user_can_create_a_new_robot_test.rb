@@ -18,8 +18,7 @@ class UserCanCreateANewRobotTest < FeatureTest
     click_button 'Create Robot'
 
     assert_equal '/robots', current_path
-
     assert page.has_content?("Henrietta")
-
   end
+
 end

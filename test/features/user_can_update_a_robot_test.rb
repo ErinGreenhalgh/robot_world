@@ -28,7 +28,6 @@ class UserCanUpdateARobotTest < FeatureTest
     assert_equal "/robots/#{id}", current_path
     assert page.has_content?("Henrietta")
     assert page.has_content?("Tucson")
-
   end
 
 end

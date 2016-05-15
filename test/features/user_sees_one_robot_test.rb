@@ -30,6 +30,6 @@ class UserSeesOneRobotTest < FeatureTest
     assert page.has_content?("05-12-2000")
     assert page.has_content?("05-12-2015")
     assert page.has_content?("accounting")
-
   end
+  
 end

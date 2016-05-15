@@ -74,4 +74,22 @@ class RobotManagerTest < Minitest::Test
     assert_equal "AZ", updated_robot.state
   end
 
+  def test_it_can_destroy_a_robot
+    data =
+    {
+      name: "Henry",
+      city: "Denver",
+      state: "CO",
+      avatar: "https://robohash.org/guy",
+      birthdate: "05-12-2000",
+      date_hired: "05-12-2015",
+      department: "accounting"
+    }
+
+    robot_id = robot_manager.create(data)
+    assert_equal 1, robot_manager.all.count
+    robot_manager.destroy(robot_id)
+    assert_equal 0, robot_manager.all.count
+  end
+
 end

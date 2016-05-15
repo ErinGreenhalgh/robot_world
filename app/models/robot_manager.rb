@@ -37,12 +37,16 @@ class RobotManager
     locate_robot(id).update(robot_data)
   end
 
+  def destroy(id)
+    locate_robot(id).delete
+  end
+
   def delete_all
     table.delete
   end
 
   def locate_robot(id)
-    # require "pry"; binding.pry
     table.where(:id => id)
   end
+
 end
