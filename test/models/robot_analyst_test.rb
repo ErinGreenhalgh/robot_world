@@ -9,7 +9,8 @@ class RobotAnalystTest < Minitest::Test
       name: "Henry",
       city: "Denver",
       state: "CO",
-      department: "IT"
+      department: "IT",
+      date_hired: "05-14-2015"
     }
 
     data2=
@@ -17,7 +18,8 @@ class RobotAnalystTest < Minitest::Test
       name: "Henrietta",
       city: "Tucson",
       state: "AZ",
-      department: "HR"
+      department: "HR",
+      date_hired: "01-13-1992"
     }
 
     data3=
@@ -25,7 +27,8 @@ class RobotAnalystTest < Minitest::Test
       name: "Pheobe",
       city: "Tucson",
       state: "AZ",
-      department: "IT"
+      department: "IT",
+      date_hired: "12-13-2015"
     }
 
     robot_manager.create(data1)
@@ -102,6 +105,29 @@ class RobotAnalystTest < Minitest::Test
       "IT" => 2
     }
     assert_equal state_data, @ra.robots_per_department
+  end
+
+  def test_it_can_collect_all_years_hired
+    collected = [{"2015"=>1}, {"1992"=>1}, {"2015"=>1}]
+    assert_equal collected, @ra.collect_all_years_hired
+  end
+
+  def test_it_can_group_by_year_hired
+    grouped =
+    {
+      "1992" => [{"1992" => 1}],
+      "2015" => [{"2015" => 1}, {"2015" => 1}]
+    }
+    assert_equal grouped, @ra.group_by_year_hired
+  end
+
+  def test_it_can_give_robots_per_year_hired
+    year_data =
+    {
+      "1992" => 1,
+      "2015" => 2
+    }
+    assert_equal year_data, @ra.robots_hired_per_year
   end
 
 end

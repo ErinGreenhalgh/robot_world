@@ -59,9 +59,19 @@ class RobotAnalyst
     count_robots_per(group_by_department)
   end
 
+  def collect_all_years_hired
+    robot_manager.all.map do |robot|
+      {robot.date_hired[-4..-1] => 1}
+    end 
+  end
 
+  def group_by_year_hired
+    group(collect_all_years_hired)
+  end
 
-
+  def robots_hired_per_year
+    count_robots_per(group_by_year_hired)
+  end
 
 
 
