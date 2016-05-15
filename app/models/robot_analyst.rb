@@ -83,12 +83,12 @@ class RobotAnalyst
 
   def find_all_ages
     convert_birthdate_to_date_object.map do |date|
-      ((Date.today - date)/365).to_f
+      ((Date.today - date)/365).to_i
     end
   end
 
   def average_age
-
+    find_all_ages.reduce(:+)/find_all_ages.count
   end
 
 

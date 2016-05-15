@@ -138,10 +138,11 @@ class RobotAnalystTest < Minitest::Test
   end
 
   def test_it_can_find_the_age_of_each_robot
-    # skip
-    assert_equal [1, 2], @ra.find_all_ages
+    assert_equal [40, 27, 15], @ra.find_all_ages
   end
 
-
+  def test_it_can_find_the_average_robot_age
+    assert_equal 27, @ra.average_age
+  end
 
 end
