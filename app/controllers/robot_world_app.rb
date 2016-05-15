@@ -1,6 +1,7 @@
 class RobotWorldApp < Sinatra::Base
 
   get "/" do
+    @robot_analyst = RobotAnalyst.new(robot_manager)
     erb :dashboard
   end
 
