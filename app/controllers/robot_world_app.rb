@@ -28,6 +28,16 @@ class RobotWorldApp < Sinatra::Base
     erb :show
   end
 
+  get 'robots/:id/edit' do |id|
+    @robot = robot_manager.find(id)
+    erb :edit
+  end
+
+  put 'robots/:id' do |id|
+    @robot = robot_manager.update(params[:robot], id)
+    redirect '/robots/:id'
+  end
+
   def robot_manager
     if ENV['RACK_ENV'] == 'test'
       database = Sequel.postgres('robot_manager_test')
