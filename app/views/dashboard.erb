@@ -7,8 +7,52 @@
   <body>
     <h1>Welcome to Robot World!</h1>
     <ul>
-      <li><a href="/robots">Robot Index</li>
-      <li><a href="/robots/new">Create a New Robot</li>
+      <li><a href="/robots">Robot Index</a></li>
+      <li><a href="/robots/new">Create a New Robot</a></li>
     </ul>
+
+    <div class="">
+      <h3>See Our Robot Data!</h3>
+      <p>Average Robot Age: <%= @robot_analyst.average_age %></p>
+
+      <table>
+        <tr>
+          <th scope="col">City</th>
+          <th scope="col">Number of Robots</th>
+        </tr>
+          <% @robot_analyst.robots_per_city.each do |city, number| %>
+          <tr>
+            <td><%= city %></td>
+            <td><%= number %></td>
+          </tr>
+          <% end %>
+      </table>
+
+      <table>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Number of Robots</th>
+        </tr>
+          <% @robot_analyst.robots_per_state.each do |state, number| %>
+          <tr>
+            <td><%= state %></td>
+            <td><%= number %></td>
+          </tr>
+          <% end %>
+      </table>
+
+      <table>
+        <tr>
+          <th scope="col">Department</th>
+          <th scope="col">Number of Robots</th>
+        </tr>
+          <% @robot_analyst.robots_per_department.each do |department, number| %>
+          <tr>
+            <td><%= department %></td>
+            <td><%= number %></td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
   </body>
 </html>
