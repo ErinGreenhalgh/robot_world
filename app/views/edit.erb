@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Update This Robot</title>
-  </head>
-  <body>
-    <h1>Update This Robot</h1>
+<h1>Update This Robot</h1>
 
-    <form action="/robots/<%=@robot.id%>" method="post">
-      <input type="hidden" name="_method" value="PUT" />
-      <input type='text' name="robot[name]" value="<%= @robot.name %>"/><br/>
-      <input type='text' name="robot[city]" value="<%= @robot.city %>"/><br/>
-      <input type='text' name="robot[state]" value="<%= @robot.state %>"/><br/>
-      <input type='text' name="robot[avatar]" value="<%= @robot.avatar %>"/><br/>
-      <input type='text' name="robot[birthdate]" value="<%= @robot.birthdate %>"/><br/>
-      <input type='text' name="robot[date_hired]" value="<%= @robot.date_hired %>"/><br/>
-      <input type='text' name="robot[department]" value="<%= @robot.department %>"/><br/>
-      <input type="submit" value="Submit Updates"/>
-    </form>
-
-  </body>
-</html>
+<form action="/robots/<%=@robot.id%>" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+  <input type='text' name="robot[name]" value="<%= @robot.name %>"/><br/>
+  <input type='text' name="robot[city]" value="<%= @robot.city %>"/><br/>
+  <input type='text' name="robot[state]" value="<%= @robot.state %>"/><br/>
+  <input type='text' name="robot[avatar]" value="<%= @robot.avatar %>"/><br/>
+  <input type='text' name="robot[birthdate]" value="<%= @robot.birthdate %>"/><br/>
+  <input type='text' name="robot[date_hired]" value="<%= @robot.date_hired %>"/><br/>
+  <input type='text' name="robot[department]" value="<%= @robot.department %>"/><br/>
+  <input class ='btn btn-warning' type="submit" value="Submit Updates"/>
+</form>
