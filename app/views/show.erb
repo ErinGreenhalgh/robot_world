@@ -1,9 +1,28 @@
 <a href="/robots">Robot Index</a>
 
-  <h1>  <%= @robot.name %></h1>
-  <p> <%= @robot.city%></p>
-  <p> <%= @robot.state%></p>
-  <p> <%= @robot.avatar%></p>
-  <p> <%= @robot.birthdate%></p>
-  <p> <%= @robot.date_hired%></p>
-  <p> <%= @robot.department%></p>
+  <div class='text-center'>
+    <h1> <%= @robot.name %></h1>
+    <img src="<%= @robot.avatar%>">
+    <table class='table'>
+      <tr>
+        <td>City</td>
+        <td><%= @robot.city%></td>
+      </tr>
+      <tr>
+        <td>State</td>
+        <td><%= @robot.state%></td>
+      </tr>
+      <tr>
+        <td>Birthdate</td>
+        <td><%= @robot.birthdate%></td>
+      </tr>
+      <tr>
+        <td>Date Hired</td>
+        <td><%= @robot.date_hired%></td>
+      </tr>
+      <tr>
+        <td>Department</td>
+        <td><%= @robot.department%></td>
+      </tr>
+    </table>
+  </div>

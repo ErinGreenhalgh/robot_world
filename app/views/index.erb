@@ -1,14 +1,14 @@
 <h1>All the Robots</h1>
-<div class="col-lg-4">
   <% @robots.each do |robot|%>
-    <img src="robot.avatar" alt=""/>
+    <div class="col-lg-4">
+      <img src="robot.avatar" alt=""/>
 
-    <h3><a href="/robots/<%= robot.id%>"><%= robot.name %></a></h3>
-    <a class='btn btn-warning' href="robots/<%=robot.id%>/edit"> Edit </a>
+      <h3><a href="/robots/<%= robot.id%>"><%= robot.name %></a></h3>
+      <a class='btn btn-warning' href="robots/<%=robot.id%>/edit"> Edit </a>
 
-    <form class= action="/robots/<%=robot.id%>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input class='btn btn-danger' type="submit" name="" value="Delete">
-    </form>
+      <form class= action="/robots/<%=robot.id%>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input class='btn btn-danger' type="submit" name="" value="Delete">
+      </form>
+    </div>
   <% end %>
-</div>
